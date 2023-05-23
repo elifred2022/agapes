@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+APP.JS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+import "./App.css";
+import { useState, useEffect } from "react";
+import { Platos } from "./components/Platos";
+import { ValorPlato } from "./components/ValorPlato";
+import { PlatoTable } from "./components/PlatoTable";
+import { VisibilityControl } from "./components/VisibilityControl";
 
-## Available Scripts
+function App() {
+const [platoItems, setPlatoItems] = useState([]);
+const [platoValue, setPlatoValue] = useState([]);
+const [showCompleted, setShowCompleted] = useState(false);
 
-In the project directory, you can run:
+/_------------------------PLATO----------------------------------------------_/
 
-### `npm start`
+function creatNewPlato(platoName) {
+console.log(platoName);
+if (!platoItems.find((plato) => plato.name === platoName)) {
+setPlatoItems([...platoItems, { name: platoName, done: false }]);
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    // setTasksItems([...tasksItems, { name: tasksItems, done: false }]); // asi se crea un nuevo objeto para no modificar objetos existentes regla de react; setTaskItems([...taskName, {name: taskName}])
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+}
 
-### `npm test`
+const togglePlato = (plato) => {
+setPlatoItems(
+platoItems.map((t) =>
+t.name === plato.name ? { ...t, done: !t.done } : t
+)
+);
+};
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+useEffect(() => {
+let data = localStorage.getItem("plato");
+if (data) {
+setPlatoItems(JSON.parse(data));
+}
+}, []);
 
-### `npm run build`
+useEffect(() => {
+localStorage.setItem("plato", JSON.stringify(platoItems));
+}, [platoItems]);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+/_------------------------VAlOR----------------------------------------------_/
+function creatNewValor(platoValue) {
+console.log(platoValue);
+if (!platoValue.find((valor) => valor.name === platoValue)) {
+setPlatoValue([...platoValue, { name: platoValue, done: false }]);
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    // setTasksItems([...tasksItems, { name: tasksItems, done: false }]); // asi se crea un nuevo objeto para no modificar objetos existentes regla de react; setTaskItems([...taskName, {name: taskName}])
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+}
 
-### `npm run eject`
+const toggleValor = (valor) => {
+setPlatoValue(
+platoValue.map((t) =>
+t.name === valor.name ? { ...t, done: !t.done } : t
+)
+);
+};
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+useEffect(() => {
+let data = localStorage.getItem("valor");
+if (data) {
+setPlatoValue(JSON.parse(data));
+}
+}, []);
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+useEffect(() => {
+localStorage.setItem("valor", JSON.stringify(platoValue));
+}, [platoValue]);
+/_------------------------LIMPIAR----------------------------------------------_/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const cleanPlato = () => {
+setPlatoItems(platoItems.filter((plato) => !plato.done));
+setShowCompleted(false);
+};
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+return (
+<main className="bg-dark vh-100 text-white">
+<div className="container p-4 col-md-4 offset-md-4">
+<Platos creatNewPlato={creatNewPlato} />
+<ValorPlato creatNewValor={creatNewValor} />
 
-## Learn More
+        <PlatoTable plato={platoItems} togglePlato={togglePlato} />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        <VisibilityControl
+          isChecked={showCompleted}
+          setShowCompleted={(checked) => setShowCompleted(checked)}
+          cleanTasks={cleanPlato}
+        />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        {showCompleted === true && (
+          <PlatoTable
+            plato={platoItems}
+            togglePlato={togglePlato}
+            showCompleted={showCompleted}
+          />
+        )}
+      </div>
+    </main>
 
-### Code Splitting
+);
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default App;
