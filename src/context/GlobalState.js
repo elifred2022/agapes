@@ -15,10 +15,19 @@ export const useGlobalState = () => {
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, intialState);
 
+  // funcion para añadir, ver codigos en el AppReducer
   const addTransaction = (transactions) => {
     dispatch({
       type: "ADD_TRANSACTION",
       payload: transactions,
+    });
+  };
+
+  // funcion para eliminar. ver codigos en el AppReducer
+  const deleteTransaction = (id) => {
+    dispatch({
+      type: "DELETE_TRANSACTION",
+      payload: id,
     });
   };
 
@@ -27,6 +36,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         transactions: state.transactions,
         addTransaction,
+        deleteTransaction,
       }}
     >
       {children}
