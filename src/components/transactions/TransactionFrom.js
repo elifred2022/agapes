@@ -4,6 +4,7 @@ import { useGlobalState } from "../../context/GlobalState";
 
 function TransactionForm() {
   const { addTransaction } = useGlobalState();
+  const [queridoHermano, setQueridoHermano] = useState();
   const [description, setDescription] = useState();
   const [amount, setAmount] = useState(0);
 
@@ -11,15 +12,21 @@ function TransactionForm() {
     e.preventDefault();
     addTransaction({
       id: window.crypto.randomUUID(), // esto genera ID automaticamente
+      queridoHermano,
       description,
-      amount,
+      amount: +amount,
     });
-    console.log(description, amount);
+    console.log(queridoHermano, description, amount);
   };
 
   return (
     <div>
       <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="Ingrese Qh"
+          onChange={(e) => setQueridoHermano(e.target.value)}
+        />
         <input
           type="text"
           placeholder="Ingrese plato"

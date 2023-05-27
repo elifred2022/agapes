@@ -9,14 +9,14 @@ function App() {
   return (
     <GlobalProvider>
       <Header />
-      <Balance />
+      <h1>Calculo de Agapes</h1>
       <TransactionForm />
       <TransactionList />
-      <h1>Hello worldsss</h1>;
+      <Balance />
     </GlobalProvider>
   );
 }
 
 export default App;
 
-// https://www.youtube.com/watch?v=zN6xXtHww54 39:32
+// https://www.youtube.com/watch?v=zN6xXtHww54 44:49

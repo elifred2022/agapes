@@ -7,6 +7,7 @@ function TransactionList() {
     <div>
       {transactions.map((transactions) => (
         <div key={transactions.id}>
+          <p>{transactions.queridoHermano} </p>
           <p>{transactions.description} </p>
           <span>{transactions.amount} </span>
           <button
