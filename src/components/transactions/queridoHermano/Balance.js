@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalState } from "../context/GlobalState";
+import { useGlobalState } from "../bebidas/GlobalState";
 
 function Balance() {
   const { transactions } = useGlobalState();

@@ -1,4 +1,4 @@
-import { useGlobalState } from "../../context/GlobalState";
+import { useGlobalState } from "../bebidas/GlobalState";
 
 function TransactionList() {
   const { transactions, deleteTransaction } = useGlobalState();
@@ -7,6 +7,8 @@ function TransactionList() {
     <div>
       {transactions.map((transactions) => (
         <div key={transactions.id}>
+          <p>{transactions.bebida} </p>
+
           <p>{transactions.queridoHermano} </p>
           <p>{transactions.description} </p>
           <span>{transactions.amount} </span>
