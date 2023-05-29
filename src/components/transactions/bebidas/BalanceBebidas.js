@@ -1,19 +1,30 @@
 import React from "react";
-import { useGlobalState } from "./GlobalState";
+import { useGlobalState } from "../../../context/GlobalState";
 
 function Balance() {
   const { transactionsBebidas } = useGlobalState();
 
-  const amountBebida = transactionsBebidas.map(
-    (transactionsBebidas) => transactionsBebidas.amountBebida
+  /* const cantBebida = transactionsBebidas.map(
+    (transactionsBebidas) => transactionsBebidas.cantBebida
+  ); */
+
+  const subAmountBebida = transactionsBebidas.map(
+    (transactionsBebidas) => transactionsBebidas.subAmountBebida
   );
 
-  const totalBebidas = amountBebida.reduce((acc, item) => (acc += item), 0);
+  //const totalBebidas = amountBebida * cantBebida;
+
+  const totalBebidas = subAmountBebida.reduce((acc, item) => (acc += item), 0);
+
+  const totalcadaQh = totalBebidas / 13;
 
   return (
     <div>
-      <h3>Total</h3>
+      <h3>Total Bebidas</h3>
       <h1>${totalBebidas} </h1>
+
+      <h3>Total cada qh</h3>
+      <h1>${totalcadaQh} </h1>
     </div>
   );
 }

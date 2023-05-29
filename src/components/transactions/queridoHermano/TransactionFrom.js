@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { useGlobalState } from "../bebidas/GlobalState";
+import { useGlobalState } from "../../../context/GlobalState";
 
 function TransactionForm() {
   const { addTransaction } = useGlobalState();
-  const [bebida, setBebida] = useState();
   const [queridoHermano, setQueridoHermano] = useState();
   const [description, setDescription] = useState();
   const [amount, setAmount] = useState(0);
@@ -13,7 +12,6 @@ function TransactionForm() {
     e.preventDefault();
     addTransaction({
       id: window.crypto.randomUUID(), // esto genera ID automaticamente
-      bebida,
       queridoHermano,
       description,
       amount: +amount,

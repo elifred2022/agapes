@@ -1,20 +1,18 @@
-import { useGlobalState } from "../bebidas/GlobalState";
+import { useGlobalState } from "../../../context/GlobalState";
 
 function TransactionList() {
-  const { transactions, deleteTransaction } = useGlobalState();
+  const { transactionsQh, deleteTransaction } = useGlobalState();
 
   return (
     <div>
-      {transactions.map((transactions) => (
-        <div key={transactions.id}>
-          <p>{transactions.bebida} </p>
-
-          <p>{transactions.queridoHermano} </p>
-          <p>{transactions.description} </p>
-          <span>{transactions.amount} </span>
+      {transactionsQh.map((transactionsQh) => (
+        <div key={transactionsQh.id}>
+          <p>{transactionsQh.queridoHermano} </p>
+          <p>{transactionsQh.description} </p>
+          <span>{transactionsQh.amount} </span>
           <button
             onClick={() => {
-              deleteTransaction(transactions.id);
+              deleteTransaction(transactionsQh.id);
             }}
           >
             Eliminar
