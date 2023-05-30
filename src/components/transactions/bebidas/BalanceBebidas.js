@@ -5,26 +5,43 @@ import { useState } from "react";
 function Balance() {
   const { transactionsBebidas } = useGlobalState();
 
-  /* const cantBebida = transactionsBebidas.map(
-    (transactionsBebidas) => transactionsBebidas.cantBebida
-  ); */
-
   const subAmountBebida = transactionsBebidas.map(
     (transactionsBebidas) => transactionsBebidas.subAmountBebida
   );
 
   const totalBebidas = subAmountBebida.reduce((acc, item) => (acc += item), 0);
 
+  const resultadoBebidas = totalBebidas;
+
   return (
     <div>
-      <h3>Total Bebidas</h3>
-      <h2>${totalBebidas} </h2>
-      <PorQh />
+      <b>Total bebidas:</b>
+      <p>{resultadoBebidas} </p>
+      <BalanceB resultado={resultadoBebidas} />
     </div>
   );
 }
 
+function BalanceB(props) {
+  // ---
+  const balanceB = () => {
+    console.log(props.resultado);
+  };
+
+  // llamamos funcion B
+
+  balanceB();
+
+  // renderizarmos contenido
+
+  return <p>{props.resultado} </p>;
+}
+
 export default Balance;
+
+/*
+
+  <h2>${totalBebidasB} </h2>
 
 function PorQh(props) {
   //const { addTransaction } = useGlobalState();
@@ -34,10 +51,10 @@ function PorQh(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const calc = (cantQh, amountCqh) => {
+    const calcCadaQh = (cantQh, amountCqh) => {
       calcCadaQh = cantQh / amountCqh;
     };
-    console.log(cantQh, amountCqh, calcCadaQh, calc);
+    console.log(cantQh, amountCqh, calcCadaQh);
   };
 
   return (
@@ -63,4 +80,89 @@ function PorQh(props) {
       </form>
     </div>
   );
+}  */
+
+/*  funcion dividir:
+
+function CadaQh(props) {
+  const [totalBebidas, setTotalBebidas] = useState();
+
+  const [denominator, setDenominator] = useState();
+  const [result, setResult] = useState(0);
+
+  const handleNumeratorChange = (e) => {
+    setTotalBebidas(Number(e.target.value));
+  };
+
+  const handleDenominatorChange = (e) => {
+    setDenominator(Number(e.target.value));
+  };
+
+  const handleDivision = () => {
+    setResult(totalBebidas / denominator);
+  };
+
+  return (
+    <div>
+      <h1>División</h1>
+      <input
+        type="number"
+        value={totalBebidas}
+        onChange={handleNumeratorChange}
+        placeholder="ingrese monto bebidas"
+      />
+
+      <input
+        type="number"
+        value={denominator}
+        onChange={handleDenominatorChange}
+        placeholder="ingrese cant qh"
+      />
+      <button onClick={handleDivision}>Dividir</button>
+      <p>Cada qh debe pagar: {result}</p>
+    </div>
+  );
 }
+
+
+
+*/
+
+/*  --------------------------- chat gpt usar funciones co otras funciones;
+
+import React from 'react';
+
+function FuncionA() {
+  // Definir la función A y retornar un valor
+  const funcionA = () => {
+    return 'Hola, soy el resultado de la Función A';
+  };
+
+  // Llamar a la función A y almacenar el resultado en una variable
+  const resultadoFuncionA = funcionA();
+
+  // Renderizar el resultado de la función A en la interfaz
+  return (
+    <div>
+      <p>{resultadoFuncionA}</p>
+      <FuncionB resultado={resultadoFuncionA} />
+    </div>
+  );
+}
+
+function FuncionB(props) {
+  // Usar el resultado de la función A en la función B
+  const funcionB = () => {
+    console.log(props.resultado); // Imprimirá 'Hola, soy el resultado de la Función A'
+  };
+
+  // Llamar a la función B
+  funcionB();
+
+  // Renderizar el contenido de la función B
+  return <p>Función B</p>;
+}
+
+export default FuncionA;
+
+*/
