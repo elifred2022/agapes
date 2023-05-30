@@ -15,13 +15,10 @@ function App() {
   return (
     <GlobalProvider>
       <Header />
-      <h1>Calculo de Agapes</h1>
-      <h2>bebidas</h2>
-
+      <h3>Bebidas en comun</h3>
       <TransactionBebidas />
-      <h2>Subtotal bebidas</h2>
+
       <TransactionListBebidas />
-      <h2>total bebidas</h2>
       <BalanceBebidas />
     </GlobalProvider>
   );
