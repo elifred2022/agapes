@@ -13,28 +13,67 @@ function Balance() {
 
   const resultadoBebidas = totalBebidas;
 
+  const resultadoBebidasB = resultadoBebidas;
+
+  //resultado={resultadoBebidasB} <p>{resultadoBebidas} </p>
+
   return (
     <div>
       <b>Total bebidas:</b>
+
       <p>{resultadoBebidas} </p>
-      <BalanceB resultado={resultadoBebidas} />
+
+      <BalanceB resultado={resultadoBebidasB} />
     </div>
   );
 }
 
 function BalanceB(props) {
   // ---
-  const balanceB = () => {
-    console.log(props.resultado);
+
+  const [totalBebidas, setTotalBebidas] = useState();
+  const [denominator, setDenominator] = useState();
+  const [result, setResult] = useState(0);
+
+  const handleNumeratorChange = (e) => {
+    setTotalBebidas(Number(e.target.value));
   };
 
-  // llamamos funcion B
+  const handleDenominatorChange = (e) => {
+    setDenominator(Number(e.target.value));
+  };
 
-  balanceB();
+  const handleDivision = () => {
+    setResult(totalBebidas / denominator);
+  };
 
-  // renderizarmos contenido
+  const funcionB = () => {
+    console.log(props.resultado); // Imprimirá 'Hola, soy el resultado de la Función A'
+  };
 
-  return <p>{props.resultado} </p>;
+  funcionB();
+
+  return (
+    <div>
+      <h1>División</h1>
+
+      <input
+        type="number"
+        value={totalBebidas}
+        onChange={handleNumeratorChange}
+        placeholder="ingrese monto bebidas"
+      />
+
+      <input
+        type="number"
+        value={denominator}
+        onChange={handleDenominatorChange}
+        placeholder="ingrese cant qh"
+      />
+      <button onClick={handleDivision}>Dividir</button>
+      <p>Cada qh debe pagar: {result}</p>
+    </div>
+  );
 }
 
 export default Balance;
