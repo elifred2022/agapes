@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalState } from "../../../context/GlobalState";
 import { useState } from "react";
 
-function Balance() {
+function Balance(props) {
   const { transactionsBebidas } = useGlobalState();
 
   const subAmountBebida = transactionsBebidas.map(
@@ -15,14 +15,13 @@ function Balance() {
 
   const resultadoBebidasB = resultadoBebidas;
 
-  //resultado={resultadoBebidasB} <p>{resultadoBebidas} </p>
+  // resultado={resultadoBebidasB} <p>{resultadoBebidas} </p>
 
   return (
     <div>
-      <b>Total bebidas:</b>
+      <b>Total bebidas: </b>
 
-      <p>{resultadoBebidas} </p>
-
+      <b>{resultadoBebidas} </b>
       <BalanceB resultado={resultadoBebidasB} />
     </div>
   );
@@ -31,107 +30,35 @@ function Balance() {
 function BalanceB(props) {
   // ---
 
-  const [totalBebidas, setTotalBebidas] = useState();
-  const [denominator, setDenominator] = useState();
-  const [result, setResult] = useState(0);
-
-  const handleNumeratorChange = (e) => {
-    setTotalBebidas(Number(e.target.value));
-  };
-
-  const handleDenominatorChange = (e) => {
-    setDenominator(Number(e.target.value));
-  };
-
-  const handleDivision = () => {
-    setResult(totalBebidas / denominator);
-  };
+  const res = props.resultado;
 
   const funcionB = () => {
-    console.log(props.resultado); // Imprimirá 'Hola, soy el resultado de la Función A'
+    // console.log(props.resultado); // Imprimirá 'Hola, soy el resultado de la Función A'
   };
 
+  // Llamar a la función B
   funcionB();
 
-  return (
-    <div>
-      <h1>División</h1>
+  //-------
+  //const totalBebidas = res;
+  const [totalBebidas = res, setTotalBebidas] = useState();
+  const [denominator, setDenominator] = useState();
+  const [result, setResult] = useState(0);
 
-      <input
+  /*
+
+  const handleNumeratorChange = (e) => {
+    setTotalBebidas(Number(e.target.value));
+  };
+  
+  <input
         type="number"
         value={totalBebidas}
         onChange={handleNumeratorChange}
         placeholder="ingrese monto bebidas"
       />
-
-      <input
-        type="number"
-        value={denominator}
-        onChange={handleDenominatorChange}
-        placeholder="ingrese cant qh"
-      />
-      <button onClick={handleDivision}>Dividir</button>
-      <p>Cada qh debe pagar: {result}</p>
-    </div>
-  );
-}
-
-export default Balance;
-
-/*
-
-  <h2>${totalBebidasB} </h2>
-
-function PorQh(props) {
-  //const { addTransaction } = useGlobalState();
-  const [cantQh, setCantQh] = useState();
-  const [amountCqh, setAmountCqh] = useState();
-  const [calcCadaQh, setCalcCadaQh] = useState();
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const calcCadaQh = (cantQh, amountCqh) => {
-      calcCadaQh = cantQh / amountCqh;
-    };
-    console.log(cantQh, amountCqh, calcCadaQh);
-  };
-
-  return (
-    <div>
-      <form className="formIngreso__bebida" onSubmit={onSubmit}>
-        <input
-          type="number"
-          step="0.01"
-          placeholder="ingrese cant qh"
-          onChange={(e) => setCantQh(e.target.value)}
-        />
-
-        <input
-          type="number"
-          step="0.01"
-          placeholder="ingrese monto bebidas"
-          onChange={(e) => setAmountCqh(e.target.value)}
-        />
-
-        <button>Calcular</button>
-
-        <p> </p>
-      </form>
-    </div>
-  );
-}  */
-
-/*  funcion dividir:
-
-function CadaQh(props) {
-  const [totalBebidas, setTotalBebidas] = useState();
-
-  const [denominator, setDenominator] = useState();
-  const [result, setResult] = useState(0);
-
-  const handleNumeratorChange = (e) => {
-    setTotalBebidas(Number(e.target.value));
-  };
+  
+  */
 
   const handleDenominatorChange = (e) => {
     setDenominator(Number(e.target.value));
@@ -143,14 +70,9 @@ function CadaQh(props) {
 
   return (
     <div>
-      <h1>División</h1>
-      <input
-        type="number"
-        value={totalBebidas}
-        onChange={handleNumeratorChange}
-        placeholder="ingrese monto bebidas"
-      />
+      <h2>Distribucion monto de bebidas</h2>
 
+      <p>Ingresa cant de QQHH asistentes</p>
       <input
         type="number"
         value={denominator}
@@ -158,14 +80,11 @@ function CadaQh(props) {
         placeholder="ingrese cant qh"
       />
       <button onClick={handleDivision}>Dividir</button>
-      <p>Cada qh debe pagar: {result}</p>
+      <p>Cada Qh debe pagar por las bebidas: $ {result}</p>
     </div>
   );
 }
-
-
-
-*/
+export default Balance;
 
 /*  --------------------------- chat gpt usar funciones co otras funciones;
 
@@ -204,4 +123,5 @@ function FuncionB(props) {
 
 export default FuncionA;
 
-*/
+
+------------------------------------------------------------------------------*/

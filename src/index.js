@@ -3,9 +3,26 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import Header from "./components/Header";
+import { GlobalProvider } from "./context/GlobalState";
+import { BebidasCalc } from "./components/transactions/bebidas/index";
+import { Comensal } from "./components/transactions/queridoHermano";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <Header />
+    <GlobalProvider>
+      <Header />
+      <h3>Bebidas en comun</h3>
+      <BebidasCalc />
+      <Comensal />
+    </GlobalProvider>
+  </BrowserRouter>
+);
+
+// SEGUIR COPIANDOME DEL APP DE BOKADILLOSPRECIOS PARA HACER LOS ROUTER VER EL ARCHIVO LAYOU
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

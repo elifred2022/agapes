@@ -7,20 +7,20 @@ function TransactionBebidas() {
   const [bebida, setBebida] = useState();
   const [cantBebida, setCantBebida] = useState();
   const [amountBebida, setAmountBebida] = useState();
-  const [subAmountBebida, setSubAmountBebida] = useState();
-  const [cantQh, setCantQh] = useState();
+  //const [subAmountBebida, setSubAmountBebida] = useState();
+  // const [cantQh, setCantQh] = useState();
 
   const onSubmit = (e) => {
     e.preventDefault();
     addTransaction({
       id: window.crypto.randomUUID(), // esto genera ID automaticamente
-      cantQh,
+
       bebida,
       cantBebida,
       amountBebida: +amountBebida,
       subAmountBebida: +amountBebida * cantBebida,
     });
-    console.log(cantQh, bebida, cantBebida, amountBebida, subAmountBebida);
+    console.log(bebida, cantBebida, amountBebida);
   };
 
   return (
