@@ -1,10 +1,13 @@
-function Header() {
+import { Layout } from "../routes/Layout";
+
+export const Header = () => {
   return (
-    <div>
-      <h1>RL Simon Bolivar 646</h1>
-      <h2>Calculo de Agapes</h2>
-    </div>
+    <header>
+      <h2>RL SIMON BOLIVAR 646</h2>
+
+      <Layout />
+    </header>
   );
-}
+};
 
 export default Header;

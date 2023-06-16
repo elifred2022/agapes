@@ -7,6 +7,7 @@ export const BebidasCalc = () => {
     
     return (
         <div>
+            <h3>Bebidas en comun</h3>
             <TransactionBebidas />
             <TransactionListBebidas />
             <Balance/>  

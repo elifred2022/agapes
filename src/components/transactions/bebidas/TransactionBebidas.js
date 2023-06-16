@@ -46,7 +46,7 @@ function TransactionBebidas() {
           onChange={(e) => setCantBebida(e.target.value)}
         />
 
-        <button>Ingresar</button>
+        <button>Cargar</button>
       </form>
     </div>
   );
