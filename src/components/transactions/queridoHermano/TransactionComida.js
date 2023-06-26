@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useGlobalState } from "../../../context/GlobalState";
 
-function TransactionForm() {
+function TransactionBebidas() {
   const { addTransaction } = useGlobalState();
   const [queridoHermano, setQueridoHermano] = useState();
   const [description, setDescription] = useState();
@@ -44,4 +44,4 @@ function TransactionForm() {
   );
 }
 
-export default TransactionForm;
+export default TransactionBebidas;

@@ -1,4 +1,6 @@
 import React from "react";
+import TransactionBebidas from "./TransactionComida"
+import TransactionListComidas from "./TransactionListComida";
 
 
 
@@ -6,7 +8,9 @@ export const Comensal = () => {
     
     return (
         <div>
-            <p>Comensal</p>
+            <TransactionBebidas />
+            <TransactionListComidas /> 
+            
         </div>
       
 

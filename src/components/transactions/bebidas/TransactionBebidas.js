@@ -7,6 +7,7 @@ function TransactionBebidas() {
   const [bebida, setBebida] = useState();
   const [cantBebida, setCantBebida] = useState();
   const [amountBebida, setAmountBebida] = useState();
+
   //const [subAmountBebida, setSubAmountBebida] = useState();
   // const [cantQh, setCantQh] = useState();
 

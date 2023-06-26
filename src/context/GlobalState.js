@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
-  transactionsBebidas: [],
+  transactions: [],
 };
 
 export const Context = createContext();
@@ -16,10 +16,10 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // funcion para añadir, ver codigos en el AppReducer
-  const addTransaction = (transactionsBebidas) => {
+  const addTransaction = (transactions) => {
     dispatch({
       type: "ADD_TRANSACTION",
-      payload: transactionsBebidas,
+      payload: transactions,
     });
   };
 
@@ -34,7 +34,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <Context.Provider
       value={{
-        transactionsBebidas: state.transactionsBebidas,
+        transactions: state.transactions,
 
         addTransaction,
         deleteTransaction,
