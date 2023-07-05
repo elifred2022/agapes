@@ -1,8 +1,9 @@
 import React from "react";
 import { useGlobalState } from "../../../context/GlobalState";
 import { useState } from "react";
+import TransactionDistribucionBebidas from "./TransactionDistribucionBebidas";
 
-function Balance() {
+function Balance(props) {
   const { transactions } = useGlobalState();
 
   const subAmountBebida = transactions.map(
@@ -22,6 +23,7 @@ function Balance() {
       <b>Total bebidas: </b>
 
       <b>{resultadoBebidas} </b>
+      <TransactionDistribucionBebidas resultadoBebidasB={resultadoBebidasB} />
     </div>
   );
 }

@@ -1,44 +1,36 @@
 import React from "react";
 import { useState } from "react";
-import { useGlobalState } from "../../../context/GlobalState";
+//import { useGlobalState } from "../../../context/GlobalState";
 
-function TransactionDistribucionBebidas() {
-  const [denominator, setDenominator] = useState();
-  const { addTransaction } = useGlobalState();
-  const { resultDist, seResultDist } = useState();
+function TransactionDistribucionBebidas(props) {
+  const [cantQh, setCantQh] = useState();
+  const [resultDist, setResultDist] = useState();
+  //const { addTransaction } = useGlobalState();
 
-  //const [subAmountBebida, setSubAmountBebida] = useState();
-  // const [cantQh, setCantQh] = useState();
+  const handleDenominatorChange = (e) => {
+    setCantQh(Number(e.target.value));
+  };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    addTransaction({
-      id: window.crypto.randomUUID(), // esto genera ID automaticamente
-
-      denominator,
-      resultDist: denominator,
-    });
-    console.log(denominator, resultDist);
+  const handleDivision = () => {
+    setResultDist(props.resultadoBebidasB / cantQh);
   };
 
   return (
-    <div>
-      <form className="formIngreso__bebida" onSubmit={onSubmit}>
-        <h2>Distribucion monto de bebidas</h2>
+    <>
+      <h2>Distribucion monto de bebidas</h2>
 
-        <p>Ingresa cant de QQHH asistentes</p>
+      <b>PROPS {props.resultadoBebidasB} </b>
 
-        <input
-          type="number"
-          value={denominator}
-          step="0.01"
-          placeholder="ingrese cant qh"
-          onChange={(e) => setDenominator(e.target.value)}
-        />
-        <button>Calcular</button>
-        <p>Cada Qh debe pagar por las bebidas: $ 00000 </p>
-      </form>
-    </div>
+      <p>Ingresa cant de QQHH asistentes</p>
+      <input
+        type="number"
+        value={cantQh}
+        onChange={handleDenominatorChange}
+        placeholder="ingrese cant qh"
+      />
+      <button onClick={handleDivision}>Dividir</button>
+      <p>Cada Qh debe pagar por las bebidas: $ {resultDist}</p>
+    </>
   );
 }
 
