@@ -1,6 +1,8 @@
 import React from "react";
-import TransactionBebidas from "./TransactionComida"
+import TransactionComidas from "./TransactionComida";
 import TransactionListComidas from "./TransactionListComida";
+import BalanceC from "./BalanceComidas";
+
 
 
 
@@ -8,8 +10,10 @@ export const Comensal = () => {
     
     return (
         <div>
-            <TransactionBebidas />
+            <TransactionComidas />
             <TransactionListComidas /> 
+            <BalanceC/>
+
             
         </div>
       

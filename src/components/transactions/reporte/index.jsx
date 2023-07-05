@@ -1,5 +1,7 @@
 import React from "react";
 import ReporteList from "./Reporte";
+import { GlobalProvider } from "../../../context/GlobalState";
+import BalanceComiBebi from "./BalanceComiBebi";
 
 
 export const Reporte = () => {
@@ -7,7 +9,11 @@ export const Reporte = () => {
     return (
         <div>
             <h1>Reporte Final</h1>
-            <ReporteList/>
+            <GlobalProvider>
+                <ReporteList/>
+               
+            </GlobalProvider>
+            
         </div>
       
 
