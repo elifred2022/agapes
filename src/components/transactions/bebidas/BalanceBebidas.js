@@ -3,8 +3,12 @@ import { useGlobalState } from "../../../context/GlobalState";
 import { useState } from "react";
 import TransactionDistribucionBebidas from "./TransactionDistribucionBebidas";
 
-function Balance(props) {
+function Balance() {
   const { transactions } = useGlobalState();
+  // const [resultadoBebidasB, setResultadoBebidasB] = useState();
+
+  // localStorage.setItem("resultadoBebidasB", resultadoBebidasB); // para guardar en el local storage
+  //setResultadoBebidasB(""); // para limpiar el campo del input
 
   const subAmountBebida = transactions.map(
     (transactions) => transactions.subAmountBebida
@@ -16,13 +20,15 @@ function Balance(props) {
 
   const resultadoBebidasB = resultadoBebidas;
 
+  localStorage.setItem("totalBebidas", resultadoBebidasB);
+
   // resultado={resultadoBebidasB} <p>{resultadoBebidas} </p>
 
   return (
     <div>
       <b>Total bebidas: </b>
 
-      <b>{resultadoBebidas} </b>
+      <b className="formBebidas">$ {resultadoBebidas} </b>
       <TransactionDistribucionBebidas resultadoBebidasB={resultadoBebidasB} />
     </div>
   );

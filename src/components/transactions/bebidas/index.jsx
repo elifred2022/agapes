@@ -8,13 +8,13 @@ import { useState } from "react";
 
 
 export const BebidasCalc = () => {
-   // const [resultadoBebidas, setResultadoBebidas] = useState();
+   
 
     return (
         <div>
             <h3>Bebidas en comun</h3>
             <GlobalProvider>
-                <TransactionBebidas />
+                  
                 <TransactionListBebidas />
                 <Balance/>
                

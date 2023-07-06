@@ -2,17 +2,26 @@ import React from "react";
 import { useState } from "react";
 import { useGlobalState } from "../../../context/GlobalState";
 
-function TransactionBebidas() {
-  const { addTransaction } = useGlobalState();
-  const [bebida, setBebida] = useState();
-  const [cantBebida, setCantBebida] = useState();
-  const [amountBebida, setAmountBebida] = useState();
+function TransactionBebidas(props) {
+  // console.log(props);
 
-  //const [subAmountBebida, setSubAmountBebida] = useState();
-  // const [cantQh, setCantQh] = useState();
+  const { addTransaction } = useGlobalState();
+  const [bebida, setBebida] = useState("");
+  const [amountBebida, setAmountBebida] = useState("");
+  const [cantBebida, setCantBebida] = useState("");
+
+  const [subAmountBebida, setSubAmountBebida] = useState();
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //para que no envie el formulario a backend
+    props.createNewBebida([bebida, amountBebida, cantBebida]); // estas props viene de transactionslist esto para almacenar el valor antes del local storage
+    localStorage.setItem("bebida", bebida); // para guardar en el local storage
+    setBebida(""); // para limpiar el campo del input
+    localStorage.setItem("costoBebida", amountBebida);
+    setAmountBebida("");
+    localStorage.setItem("cantBebida", cantBebida);
+    setCantBebida("");
+
     addTransaction({
       id: window.crypto.randomUUID(), // esto genera ID automaticamente
 
@@ -31,6 +40,7 @@ function TransactionBebidas() {
           type="text"
           placeholder="Ingrese bebida"
           onChange={(e) => setBebida(e.target.value)}
+          value={bebida} // para ir limpiando el input mientras se va cargando datos
         />
 
         <input
@@ -38,6 +48,7 @@ function TransactionBebidas() {
           step="0.01"
           placeholder="ingrese valor de bebida"
           onChange={(e) => setAmountBebida(e.target.value)}
+          value={amountBebida}
         />
 
         <input
@@ -45,6 +56,7 @@ function TransactionBebidas() {
           step="0.01"
           placeholder="ingrese cantidad bebidas"
           onChange={(e) => setCantBebida(e.target.value)}
+          value={cantBebida}
         />
 
         <button>Cargar</button>
