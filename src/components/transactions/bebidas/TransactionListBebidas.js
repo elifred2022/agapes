@@ -1,20 +1,23 @@
 import { useState } from "react";
 import { useGlobalState } from "../../../context/GlobalState";
 import TransactionBebidas from "./TransactionBebidas";
+import BalanceBebidas from "./BalanceBebidas";
 
 function TransactionListBebidas() {
   const { transactions, deleteTransaction } = useGlobalState();
 
-  const [bebidaItems, setBebidaItems] = useState();
-
+  //const [bebida, setBebida] = useState("");
+  /*
   function createNewBebida(bebida) {
-    // setBebidaItems([...bebidaItems, { name: bebida }]);
+    //  console.log(bebida);
+    // setBebida([...bebida, { name: bebidaName }]); este codigo me bloquea el sistema
     alert(bebida);
-  }
+  } 
+  createNewBebida={createNewBebida} 
+  */
 
   return (
     <div>
-      <TransactionBebidas createNewBebida={createNewBebida} />
       <table>
         <thead className="formCabecera">
           <tr>

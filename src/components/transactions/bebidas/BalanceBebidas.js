@@ -3,7 +3,7 @@ import { useGlobalState } from "../../../context/GlobalState";
 import { useState } from "react";
 import TransactionDistribucionBebidas from "./TransactionDistribucionBebidas";
 
-function Balance() {
+function BalanceBebidas(props) {
   const { transactions } = useGlobalState();
   // const [resultadoBebidasB, setResultadoBebidasB] = useState();
 
@@ -20,13 +20,15 @@ function Balance() {
 
   const resultadoBebidasB = resultadoBebidas;
 
+  //  props.createNewBebida([resultadoBebidasB, subAmountBebida]);
   localStorage.setItem("totalBebidas", resultadoBebidasB);
+  localStorage.setItem("subTotalBebidas", subAmountBebida);
 
   // resultado={resultadoBebidasB} <p>{resultadoBebidas} </p>
 
   return (
     <div>
-      <b>Total bebidas: </b>
+      <b>Total en bebidas: </b>
 
       <b className="formBebidas">$ {resultadoBebidas} </b>
       <TransactionDistribucionBebidas resultadoBebidasB={resultadoBebidasB} />
@@ -34,7 +36,7 @@ function Balance() {
   );
 }
 
-export default Balance;
+export default BalanceBebidas;
 
 /*  
 ASI FUNCIONO CON EL PROPS LA FORMULA PARA DISTRIBUCION DE BEBIDAS ENTRE ASISTENTES, PERO QUIERO MEJORARLA
