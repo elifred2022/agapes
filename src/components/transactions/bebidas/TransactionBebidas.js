@@ -4,10 +4,11 @@ import { useGlobalState } from "../../../context/GlobalState";
 import TransactionListBebidas from "./TransactionListBebidas";
 import BalanceBebidas from "./BalanceBebidas";
 
-function TransactionBebidas() {
+function TransactionBebidas(props) {
   // console.log(props);
 
   const { addTransaction } = useGlobalState();
+  const { createNewTransaction } = useGlobalState();
   const [bebida, setBebida] = useState("");
   const [amountBebida, setAmountBebida] = useState("");
   const [cantBebida, setCantBebida] = useState("");
@@ -15,7 +16,9 @@ function TransactionBebidas() {
 
   const onSubmit = (e) => {
     e.preventDefault(); //para que no envie el formulario a backend
-    //props.createNewBebida([bebida, cantBebida, amountBebida, subAmountBebida]); // estas props viene de transactionslist esto para almacenar el valor antes del local storage
+    //props.addTransaction([bebida, cantBebida, amountBebida, subAmountBebida]); // se usa el props o se usa el context, estoy vieno si me qiedo con el context
+    createNewTransaction([bebida, amountBebida, cantBebida, subAmountBebida]); // codigo del context viene de Globalstate
+    //createNewTransaction(bebida, cantBebida, amountBebida, subAmountBebida);
     localStorage.setItem("bebida", bebida); // para guardar en el local storage
     setBebida(""); // para limpiar el campo del input
     localStorage.setItem("costoBebida", amountBebida);
@@ -35,12 +38,6 @@ function TransactionBebidas() {
 
     console.log(bebida, cantBebida, amountBebida, subAmountBebida);
   };
-
-  function createNewBebida(bebida) {
-    console.log(bebida);
-    // setBebida([...bebida, { name: bebidaName }]); este codigo me bloquea el sistema
-    alert(bebida);
-  }
 
   return (
     <div>

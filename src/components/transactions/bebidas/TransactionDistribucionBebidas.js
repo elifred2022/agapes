@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-//import { useGlobalState } from "../../../context/GlobalState";
+import { useGlobalState } from "../../../context/GlobalState";
 
 function TransactionDistribucionBebidas(props) {
   const [cantQh, setCantQh] = useState();
   const [resultDist, setResultDist] = useState("");
+  const { createNewTransaction } = useGlobalState();
   //const { addTransaction } = useGlobalState();
 
   const handleDenominatorChange = (e) => {

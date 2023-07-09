@@ -8,6 +8,17 @@ import { useState } from "react";
 
 export const BebidasCalc = () => {
    
+ //const [bebidaItems, setBebidaItems] = useState();
+ /* 
+  function createNewBebida(transactionName) {
+    //  console.log(bebida);
+    setBebidaItems([...bebidaItems, { name: transactionName }]); //este codigo me bloquea el sistema
+    alert(transactionName);
+  } */
+
+
+  //createNewBebida={createNewBebida} 
+  
 
     return (
         <div>

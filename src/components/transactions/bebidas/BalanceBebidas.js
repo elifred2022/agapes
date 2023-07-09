@@ -3,8 +3,9 @@ import { useGlobalState } from "../../../context/GlobalState";
 import { useState } from "react";
 import TransactionDistribucionBebidas from "./TransactionDistribucionBebidas";
 
-function BalanceBebidas(props) {
+function BalanceBebidas() {
   const { transactions } = useGlobalState();
+  const { createNewTransaction } = useGlobalState();
   // const [resultadoBebidasB, setResultadoBebidasB] = useState();
 
   // localStorage.setItem("resultadoBebidasB", resultadoBebidasB); // para guardar en el local storage
@@ -21,6 +22,7 @@ function BalanceBebidas(props) {
   const resultadoBebidasB = resultadoBebidas;
 
   //  props.createNewBebida([resultadoBebidasB, subAmountBebida]);
+  createNewTransaction([resultadoBebidasB]); // esto viene del context globalstate
   localStorage.setItem("totalBebidas", resultadoBebidasB);
   localStorage.setItem("subTotalBebidas", subAmountBebida);
 

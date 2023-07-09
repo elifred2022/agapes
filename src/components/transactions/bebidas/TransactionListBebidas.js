@@ -6,16 +6,6 @@ import BalanceBebidas from "./BalanceBebidas";
 function TransactionListBebidas() {
   const { transactions, deleteTransaction } = useGlobalState();
 
-  //const [bebida, setBebida] = useState("");
-  /*
-  function createNewBebida(bebida) {
-    //  console.log(bebida);
-    // setBebida([...bebida, { name: bebidaName }]); este codigo me bloquea el sistema
-    alert(bebida);
-  } 
-  createNewBebida={createNewBebida} 
-  */
-
   return (
     <div>
       <table>
@@ -33,7 +23,7 @@ function TransactionListBebidas() {
 
         <tbody>
           {transactions.map((transactions) => (
-            <tr className="formBebidas" key={transactions.bebida}>
+            <tr className="formBebidas" key={transactions.id}>
               <td>
                 <b>{transactions.bebida}</b>
               </td>
