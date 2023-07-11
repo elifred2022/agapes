@@ -1,14 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useGlobalState } from "../../../context/GlobalState";
-import TransactionListBebidas from "./TransactionListBebidas";
-import BalanceBebidas from "./BalanceBebidas";
 
-function TransactionBebidas(props) {
+function TransactionBebidas() {
   // console.log(props);
 
   const { addTransaction } = useGlobalState();
-  const { createNewTransaction } = useGlobalState();
   const [bebida, setBebida] = useState("");
   const [amountBebida, setAmountBebida] = useState("");
   const [cantBebida, setCantBebida] = useState("");
@@ -17,16 +14,16 @@ function TransactionBebidas(props) {
   const onSubmit = (e) => {
     e.preventDefault(); //para que no envie el formulario a backend
     //props.addTransaction([bebida, cantBebida, amountBebida, subAmountBebida]); // se usa el props o se usa el context, estoy vieno si me qiedo con el context
-    createNewTransaction([bebida, amountBebida, cantBebida, subAmountBebida]); // codigo del context viene de Globalstate
-    //createNewTransaction(bebida, cantBebida, amountBebida, subAmountBebida);
-    localStorage.setItem("bebida", bebida); // para guardar en el local storage
+    // addTransaction(bebida);
+    //createNewTransaction([bebida, amountBebida, cantBebida, subAmountBebida]); // codigo del context viene de Globalstate
+    //---localStorage.setItem("bebida", bebida); // para guardar en el local storage
     setBebida(""); // para limpiar el campo del input
-    localStorage.setItem("costoBebida", amountBebida);
+    // localStorage.setItem("costoBebida", amountBebida);
     setAmountBebida("");
-    localStorage.setItem("cantBebida", cantBebida);
+    //localStorage.setItem("cantBebida", cantBebida);
     setCantBebida("");
     //localStorage.setItem("subTotalBebidas", subAmountBebida); me lo lleve al BalanceBebidas.js
-    // setSubAmountBebida(""); no deberia vaciarse
+    //setSubAmountBebida(""); no deberia vaciarse
 
     addTransaction({
       id: window.crypto.randomUUID(), // esto genera ID automaticamente
@@ -36,7 +33,7 @@ function TransactionBebidas(props) {
       subAmountBebida: +amountBebida * cantBebida,
     });
 
-    console.log(bebida, cantBebida, amountBebida, subAmountBebida);
+    console.log(bebida, amountBebida, cantBebida, subAmountBebida);
   };
 
   return (

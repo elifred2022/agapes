@@ -1,6 +1,5 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import TransactionBebidas from "../components/transactions/bebidas/TransactionBebidas";
 
 const initialState = {
   transactions: [],
@@ -16,14 +15,22 @@ export const useGlobalState = () => {
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  /*
   function createNewTransaction(transactions) {
-    //  console.log(bebida);
-    //setBebidaItems([...bebidaItems, { name: transactionName }]); //este codigo me bloquea el sistema
-    alert(transactions);
-  }
+    console.log(transactions);
+    if (
+      !transactions.find((transactions) => transactions.name === transactions)
+    ) {
+      dispatch([...transactions, { name: transactions, done: false }]);
+    }
+    // dispatch([...state, { name: state, done: false }]); //este codigo me bloquea el sistema
+    // alert(transactions);
+  } */
 
   // funcion para añadir, ver codigos en el AppReducer
   const addTransaction = (transactions) => {
+    //alert(transactions);
+
     dispatch({
       type: "ADD_TRANSACTION",
       payload: transactions, //transactions
@@ -45,7 +52,6 @@ export const GlobalProvider = ({ children }) => {
 
         addTransaction,
         deleteTransaction,
-        createNewTransaction,
       }}
     >
       {children}

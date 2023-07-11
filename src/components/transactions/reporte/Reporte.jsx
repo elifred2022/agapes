@@ -8,6 +8,8 @@ import TransactionListComidas from "../queridoHermano/TransactionListComida";
 function ReporteList() {
   const { transactions, deleteTransaction } = useGlobalState();
 
+  
+
  
 
   return (
@@ -25,6 +27,7 @@ function ReporteList() {
  
 
    </div>
+
            
     </div>
   );

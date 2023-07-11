@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useGlobalState } from "../../../context/GlobalState";
-import TransactionBebidas from "./TransactionBebidas";
-import BalanceBebidas from "./BalanceBebidas";
 
 function TransactionListBebidas() {
   const { transactions, deleteTransaction } = useGlobalState();

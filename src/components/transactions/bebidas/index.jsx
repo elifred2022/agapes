@@ -3,7 +3,8 @@ import TransactionBebidas from "./TransactionBebidas";
 import TransactionListBebidas from "./TransactionListBebidas";
 import BalanceBebidas from './BalanceBebidas'
 import { GlobalProvider } from "../../../context/GlobalState";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useGlobalState } from "../../../context/GlobalState";
 
 
 export const BebidasCalc = () => {
@@ -16,8 +17,12 @@ export const BebidasCalc = () => {
     alert(transactionName);
   } */
 
-
+  
   //createNewBebida={createNewBebida} 
+
+  const { transactions, deleteTransaction } = useGlobalState();
+
+
   
 
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalState } from "../../../context/GlobalState";
 import { useState } from "react";
 
-function BalanceComiBebi(props) {
+function BalanceComiBebi() {
   const [resBebida, setResbebida] = useState();
   const [resComida, setResComida] = useState();
   //const [totalCqh, setTotalCqh] = useState();
@@ -13,14 +13,7 @@ function BalanceComiBebi(props) {
 
   return (
     <div>
-      <div className="formCabecera">
-        <b>Querido Hermano</b>
-        <b>Debe pagar</b>
-      </div>
-      <div>
-        <b>Fulano de tal</b>
-        <b> {totalCqh} pruebas </b>
-      </div>
+      <p>Nombres y monto</p>
     </div>
   );
 }
