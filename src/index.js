@@ -15,9 +15,8 @@ import { Reporte } from "./components/transactions/reporte";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Header />
-
     <GlobalProvider>
+      <Header />
       <Routes>
         <Route index element={<Reporte />} />
         <Route path="/BebidasCalc" element={<BebidasCalc />} />
@@ -31,6 +30,8 @@ root.render(
 reportWebVitals();
 
 /*
+probar haciendo funciones distintas a Addtransaction por que se me duplican los estados
+
 https://www.youtube.com/watch?v=sjrK6RA65eQ&t=1649s
 
 ASI ESTA BIEN EL ROUTER PARA QUE APAREZCA LOS ENLACES EN EL BODY 

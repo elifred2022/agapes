@@ -33,6 +33,7 @@ function BalanceBebidas() {
       <b>Total en bebidas: </b>
 
       <b className="formBebidas">$ {resultadoBebidas} </b>
+
       <TransactionDistribucionBebidas resultadoBebidasB={resultadoBebidasB} />
     </div>
   );

@@ -1,23 +1,33 @@
-import React from "react";
-import { useGlobalState } from "../../../context/GlobalState";
 import { useState } from "react";
+import { useGlobalState } from "../../../context/GlobalState";
+import TransactionDistribucionBebidas from "../../transactions/bebidas/TransactionDistribucionBebidas";
+import BalanceC from "../queridoHermano/BalanceComidas";
 
-function BalanceComiBebi() {
-  const [resBebida, setResbebida] = useState();
-  const [resComida, setResComida] = useState();
-  //const [totalCqh, setTotalCqh] = useState();
-  //const { addTransaction } = useGlobalState();
+function TransactionListReporte(props) {
   const { transactions, deleteTransaction } = useGlobalState();
 
-  const totalCqh = 10 + 10;
+  const { amount } = useGlobalState;
+  const { resultadoComidasB } = BalanceC;
+
+  const resultFinal = props.resultDist;
 
   return (
     <div>
-      <p>Nombres y monto</p>
+      <div className="formCabecera">
+        <b>Querido Hermano</b>
+        <b>Plato + Bebida</b>
+        <b>Monto a pagar</b>
+      </div>
+      <div>
+        {transactions.map((transactions) => (
+          <div className="formBebidas" key={transactions.id}>
+            <b>{transactions.queridoHermano} </b>
+          </div>
+        ))}
+      </div>
+      <span> {resultFinal} </span>
     </div>
   );
 }
 
-export default BalanceComiBebi;
-
-// no se comunica con los componentes de bebidas y comida para hacer el calculo
+export default TransactionListReporte;
